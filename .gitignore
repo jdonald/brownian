@@ -1,0 +1,22 @@
+# Static single-file web game: nothing is built, so only ignore local clutter.
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local tooling, if ever added (npm, playtest scripts, local servers)
+node_modules/
+npm-debug.log*
+.env
+*.log
+
+# Scratch / temporary files
+tmp/
+*.tmp
