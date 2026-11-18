@@ -24,6 +24,10 @@ You steer a pollen grain floating in water using only temperature. About 400 sim
 - The **Lessons on/off** switch on the level grid skips the Einstein scenes. **Skip ▸▸** skips a single scene.
 - ♪ toggles the music and sound effects. 🗣 opens the voice picker.
 
+### Add to Home Screen
+
+The game works as a home-screen app. In Safari, tap Share → **Add to Home Screen**. On Android Chrome, use **Install app**. It installs as **Brownian** with a pixel-art pollen-grain icon and opens full-screen, without the browser bar.
+
 ### Einstein's voice
 
 The narration uses the browser's built-in speech synthesis, so the voice depends on what your device has installed. The game prefers a German male voice reading English text, with numbers converted to English words. It falls back to an English male voice reading accent-spelled text ("Ve vill vatch zeh vater..."). For the most Einstein-like voice on iPhone, go to Settings → Accessibility → Spoken Content → Voices → German and download **Grandpa**.
@@ -44,6 +48,7 @@ python3 -m http.server 8000
 - **Molecules:** 420 particles following Langevin dynamics. Each one's thermal speed scales with √T at its position.
 - **Grain:** bounced around by elastic collisions with the molecules, plus a thermophoretic drift down the temperature gradient. Cold areas pull harder than hot areas push, so Cool works as a usable "pull".
 - **Audio:** the chiptune music, blips and hiss are all synthesized live with the Web Audio API. Speech uses `speechSynthesis`.
+- **Home-screen app:** `manifest.webmanifest`, an Apple touch icon and pixel-art icons in `icons/`, generated at 32×32 and scaled up with nearest-neighbor. There's a maskable variant for Android.
 - **Saving:** stars and settings are kept in `localStorage`.
 - **Playtesting:** a headless Node bot played every level to check that each one can be beaten.
 
@@ -55,6 +60,7 @@ The game was built in one conversation with **Claude Opus 5.5** (`claude-opus-5-
 2. **Voice fix:** the first version picked up a female German voice and read "1905" in German. Claude added a voice picker that prefers male and old-sounding voices, raised the pitch for a squeaky professor sound, converted numbers to English words, and added accent-spelled text for English voices.
 3. **Expansion to 20 levels:** added hot and cold vents, cold-activated thermometers, gates that need several thermometers, and swinging glue. Every level was unlocked behind a 4×5 grid, a Lessons on/off switch was added, and a new Einstein lesson was written for each level. Gates were also retuned, and thermometers now cool slowly.
 4. **Archive to GitHub:** this repo, with the README, a `.gitignore` and screenshots.
+5. **Home-screen polish** (November 2026): added a pixel-art app icon and a web manifest, so "Add to Home Screen" shows a real icon instead of a plain "B". The app name is now **Brownian**, while the browser tab keeps the full title.
 
 ### Initial prompt
 
@@ -69,6 +75,8 @@ The game was built in one conversation with **Claude Opus 5.5** (`claude-opus-5-
 > Okay we've beaten the game's 6 levels. Please expand the game to 20 levels in total.
 >
 > And as we'd hate to fully start over when reopening the Claude app, make it easy to skip and jump to any level from the UI.
+
+> The PWA is working alright on my phone, even w/ "add to Home Screen", but it doesn't face a custom icon, I just see a "B". Also its default app name would be cleaner as just "Brownian" even if the fuller name "Brownian! A thermal puzzle…" is still the browser bar name.
 
 ## License
 
